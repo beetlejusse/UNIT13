@@ -1,40 +1,44 @@
-"use client";
+"use client"
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
+interface Star {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  duration: number;
+  delay: number;
+}
+
 export default function ComingSoon() {
-  const [stars, setStars] = useState([]);
-  const [mounted, setMounted] = useState(false);
+  const [stars, setStars] = useState<Star[]>([]);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setMounted(true);
 
-    // Generate random stars
-    const generateStars = () => {
-      const newStars = [];
-      for (let i = 0; i < 100; i++) {
-        newStars.push({
-          id: i,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
-          size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.7 + 0.1,
-          duration: Math.random() * 5 + 3,
-          delay: Math.random() * 2
-        });
-      }
+    const generateStars = (): void => {
+      const newStars: Star[] = Array.from({ length: 100 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.7 + 0.1,
+        duration: Math.random() * 5 + 3,
+        delay: Math.random() * 2,
+      }));
       setStars(newStars);
     };
 
     generateStars();
   }, []);
 
-  // Only render stars after component has mounted on client
   const renderStars = () => {
     if (!mounted) return null;
-
     return stars.map((star) => (
       <motion.div
         key={star.id}
@@ -44,17 +48,17 @@ export default function ComingSoon() {
           top: `${star.y}%`,
           width: `${star.size}px`,
           height: `${star.size}px`,
-          opacity: 0
+          opacity: 0,
         }}
         animate={{
           opacity: [0, star.opacity, star.opacity * 1.5, star.opacity, 0],
-          scale: [1, 1.2, 1]
+          scale: [1, 1.2, 1],
         }}
         transition={{
           duration: star.duration,
           delay: star.delay,
           repeat: Infinity,
-          repeatType: "loop"
+          repeatType: "loop",
         }}
       />
     ));
@@ -62,41 +66,21 @@ export default function ComingSoon() {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-black text-white relative overflow-hidden">
-      {/* Suppress hydration warning */}
-      <div suppressHydrationWarning>
-        {/* Starry background effect */}
-        {renderStars()}
-      </div>
+      <div suppressHydrationWarning>{renderStars()}</div>
 
-      {/* Abstract background elements */}
       <motion.div
         className="absolute w-96 h-96 rounded-full bg-gray-900 blur-3xl opacity-30"
-        animate={{
-          x: [0, 30, 0],
-          y: [0, -30, 0]
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          repeatType: "reverse"
-        }}
+        animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
+        transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
         style={{ top: "10%", left: "15%" }}
       />
       <motion.div
         className="absolute w-80 h-80 rounded-full bg-gray-800 blur-3xl opacity-20"
-        animate={{
-          x: [0, -40, 0],
-          y: [0, 40, 0]
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          repeatType: "reverse"
-        }}
+        animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
+        transition={{ duration: 18, repeat: Infinity, repeatType: "reverse" }}
         style={{ bottom: "15%", right: "10%" }}
       />
 
-      {/* Main Title */}
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -106,7 +90,6 @@ export default function ComingSoon() {
         UNIT13
       </motion.h1>
 
-      {/* Decorative Divider */}
       <motion.div
         initial={{ opacity: 0, width: 0 }}
         animate={{ opacity: 0.7, width: "80px" }}
@@ -114,7 +97,6 @@ export default function ComingSoon() {
         className="h-1 bg-white my-8"
       />
 
-      {/* Subtitle */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -124,7 +106,6 @@ export default function ComingSoon() {
         Coming Soon...
       </motion.p>
 
-      {/* Transparent Linktree Button - Positioned at bottom right */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
