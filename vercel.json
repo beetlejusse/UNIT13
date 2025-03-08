@@ -1,9 +1,0 @@
-{
-    "rewrites": [
-      {
-        "source": "/:path*", 
-        "destination": "https://smartflow-sigma.vercel.app/:path*"
-      }
-    ]
-  }
-  
