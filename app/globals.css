@@ -4,6 +4,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Hide Next.js error overlay */
+nextjs-portal {
+  display: none !important;
+}
+
+/* Prevent body overflow issues when error occurs */
+body {
+  padding: 0 !important;
+  overflow: auto !important;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
