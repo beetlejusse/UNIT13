@@ -1,15 +1,40 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Borel, Condiment, Great_Vibes, Oswald, Press_Start_2P, Rye } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const borel = Borel({
   subsets: ["latin"],
+  weight: "400",
+  variable: "--font-borel",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const condiment = Condiment({
   subsets: ["latin"],
+  weight: "400",
+  variable: "--font-condiment",
+});
+
+const vibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-vibes",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-oswald",
+});
+
+const press = Press_Start_2P({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-press",
+});
+
+const rye = Rye({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-rye",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${borel.variable} ${condiment.variable} ${vibes.variable} ${oswald.variable} ${press.variable} ${rye.variable} antialiased`}
       >
         {children}
       </body>
