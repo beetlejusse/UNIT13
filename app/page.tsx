@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { GradientBars } from "@/components/bg-bars";
 import HelloPage from "@/components/customs/HelloPage";
-import RotatingText from "@/components/ui/rotating-text";
+// import RotatingText from "@/components/ui/rotating-text";
 import Writeup from "@/components/customs/Writeup";
 
 interface Star {
@@ -74,6 +74,18 @@ export default function UNIT13() {
       <div suppressHydrationWarning>{renderStars()}</div>
 
       <Writeup />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-12 right-12"
+      >
+        <a href="https://linktr.ee/thisisunit13" target="_blank" rel="noopener noreferrer">
+          <Button className="px-6 py-3 text-lg bg-transparent border border-white text-white hover:bg-white/10 transition rounded-md cursor-pointer">
+            Visit Our Linktree 
+          </Button>
+        </a>
+      </motion.div>
       <HelloPage />
     </div>
   );
