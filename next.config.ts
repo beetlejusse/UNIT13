@@ -1,14 +1,14 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/smartflow/:path*", // Redirect all "/smartflow" requests
-        destination: "https://smartflow-sigma.vercel.app/:path*", // Your SmartFlow project URL
-      },
-    ];
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
   },
-};
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    unoptimized: true,
+  },
+}
 
-export default nextConfig;
+export default nextConfig

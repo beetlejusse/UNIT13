@@ -4,6 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-borel: "Borel", cursive;
+  --font-condiment: "Condiment", cursive;
+  --font-vibes: "Great Vibes", cursive;
+  --font-oswald: "Oswald", sans-serif;
+  --font-press: "Press Start 2P", cursive;
+  --font-rye: "Rye", serif;
+}
+
+
 /* Hide Next.js error overlay */
 nextjs-portal {
   display: none !important;
