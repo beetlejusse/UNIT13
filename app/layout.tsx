@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Borel, Condiment, Great_Vibes, Oswald, Press_Start_2P, Rye } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 
 const borel = Borel({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({
         className={`${borel.variable} ${condiment.variable} ${vibes.variable} ${oswald.variable} ${press.variable} ${rye.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
