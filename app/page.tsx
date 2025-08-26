@@ -78,11 +78,20 @@ export default function UNIT13() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-12 right-12"
+        className="absolute bottom-8 right-8 backdrop-blur-sm bg-black/20 p-4 rounded-lg border border-white/10"
       >
-        <a href="https://linktr.ee/thisisunit13" target="_blank" rel="noopener noreferrer">
-          <Button className="px-6 py-3 text-lg bg-transparent border border-white text-white hover:bg-white/10 transition rounded-md cursor-pointer">
-            Visit Our Linktree 
+        <div className="text-gray-400 text-sm mb-2 italic">
+          completing too soon, till then
+        </div>
+        <a
+          href="https://linktr.ee/thisisunit13"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button className="px-6 py-3 text-lg bg-transparent border border-white/40 text-white hover:bg-white/20 hover:border-white transition-all duration-300 rounded-md cursor-pointer group">
+            <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">
+              Visit Our Linktree
+            </span>
           </Button>
         </a>
       </motion.div>
