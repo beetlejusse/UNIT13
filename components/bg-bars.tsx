@@ -9,7 +9,7 @@ interface GradientBarsProps {
 
 export const GradientBars = ({
   bars = 20,
-  colors = ['#e60a64', 'transparent'],
+  colors = ['#F01470FF', 'transparent'],
 }: GradientBarsProps) => {
   const gradientStyle = `linear-gradient(to top, ${colors.join(', ')})`;
   return (

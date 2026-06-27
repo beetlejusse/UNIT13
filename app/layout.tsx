@@ -1,28 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Borel, Condiment, Great_Vibes, Oswald, Press_Start_2P, Rye } from "next/font/google";
+import { Inter, Space_Grotesk, Press_Start_2P } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 
-const borel = Borel({
+const inter = Inter({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-borel",
+  variable: "--font-inter",
 });
 
-const condiment = Condiment({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-condiment",
-});
-
-const vibes = Great_Vibes({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-vibes",
-});
-
-const oswald = Oswald({
-  subsets: ["latin"],
-  variable: "--font-oswald",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space",
 });
 
 const press = Press_Start_2P({
@@ -31,15 +20,30 @@ const press = Press_Start_2P({
   variable: "--font-press",
 });
 
-const rye = Rye({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-rye",
-});
-
 export const metadata: Metadata = {
-  title: "Unit13",
-  description: "Portfolio for Unit13",
+  title: "UNIT13 — Creative & Digital Collective",
+  description:
+    "UNIT13 is a creative collective crafting bold brands, immersive websites, and digital experiences that refuse to blend in.",
+  keywords: [
+    "UNIT13",
+    "creative collective",
+    "web design",
+    "branding",
+    "digital studio",
+    "development",
+  ],
+  openGraph: {
+    title: "UNIT13 — Creative & Digital Collective",
+    description:
+      "Bold brands, immersive websites, and digital experiences that refuse to blend in.",
+    url: "https://linktr.ee/thisisunit13",
+    siteName: "UNIT13",
+    type: "website",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#050505",
 };
 
 export default function RootLayout({
@@ -48,11 +52,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${borel.variable} ${condiment.variable} ${vibes.variable} ${oswald.variable} ${press.variable} ${rye.variable} antialiased`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${press.variable} font-sans bg-ink text-white antialiased selection:bg-brand selection:text-white`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
